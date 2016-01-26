@@ -122,10 +122,6 @@ gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance-Orange'
 gsettings set org.mate.Marco.general theme 'Ambiance-Orange'
 gsettings set org.mate.font-rendering antialiasing 'rgba'
 gsettings set org.mate.font-rendering hinting 'slight'
-gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
-gsettings set org.mate.caja.desktop font 'Ubuntu 11'
-gsettings set org.mate.interface font-name 'Ubuntu 11'
 
 echo "[+] Upgrading packages..."
 APT_LISTCHANGES_FRONTEND=none apt-get -o Dpkg::Options::="--force-confnew" -y -qq upgrade

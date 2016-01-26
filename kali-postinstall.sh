@@ -64,7 +64,9 @@ wget -q -P "$SCRIPTDLPATH" https://launchpad.net/~ravefinity-project/+archive/ub
 
 echo "[+] Installing themes and fonts..."
 cd $SCRIPTDLPATH
-dpkg -i *.deb
+dpkg -i humanity-icon*.deb
+dpkg -i ubuntu-mono*.deb
+dpkg -i ambiance-colors*.deb
 cd $OLDPWD
 
 echo "[+] Downloading firefox extensions..."

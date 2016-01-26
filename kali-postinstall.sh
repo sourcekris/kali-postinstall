@@ -127,30 +127,6 @@ gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
 gsettings set org.mate.caja.desktop font 'Ubuntu 11'
 gsettings set org.mate.interface font-name 'Ubuntu 11'
 
-# add apps to panel
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-0/ launcher-location '/usr/share/applications/mate-terminal.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-0/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-0/ toplevel-id 'top'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-1/ launcher-location '/usr/share/applications/iceweasel.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-1/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-1/ toplevel-id 'top'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-2/ launcher-location '/usr/share/applications/kali-wireshark.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-2/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-2/ toplevel-id 'top'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-3/ launcher-location '/usr/share/applications/kali-msfconsole.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-3/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-3/ toplevel-id 'top'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-4/ launcher-location '/usr/share/applications/kali-zaproxy.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-4/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-4/ toplevel-id 'top'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-5/ launcher-location '/usr/share/applications/kali-burpsuite.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-5/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-5/ toplevel-id 'top'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-6/ launcher-location '/usr/share/applications/kali-zenmap.desktop'
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-6/ position -1
-gsettings set org.mate.panel.object:/org/mate/panel/objects/object-6/ toplevel-id 'top'
-gsettings set org.mate.panel object-id-list "['menu-bar', 'notification-area', 'clock', 'show-desktop', 'window-list', 'workspace-switcher', 'object-0', 'object-1', 'object-2', 'object-3', 'object-4', 'object-5', 'object-6']"
-
 echo "[+] Upgrading packages..."
 APT_LISTCHANGES_FRONTEND=none apt-get -o Dpkg::Options::="--force-confnew" -y -qq upgrade
 

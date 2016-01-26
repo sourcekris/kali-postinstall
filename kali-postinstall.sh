@@ -56,11 +56,10 @@ echo "[+] Installing mate desktop and setting it to default Xsession..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
 echo mate-session > ~/.xsession
 
-echo "[+] Downloading Ambiance themes and fonts..."
+echo "[+] Downloading Ambiance themes..."
 mkdir scriptdls 2>/dev/null
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_14.04+15.10.20151001-0ubuntu1_all.deb
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
 wget -q -P "$SCRIPTDLPATH" https://launchpad.net/~ravefinity-project/+archive/ubuntu/ppa/+files/ambiance-colors_15.10.1~wily~NoobsLab.com_all.deb
 
 echo "[+] Installing themes and fonts..."
@@ -99,6 +98,13 @@ wget -q -O ~/.msf5/plugins/pentest.rb https://raw.githubusercontent.com/darkoper
 echo "[+] Updating wpscan..."
 wpscan --update
 
+echo "[+] Downloading Ubuntu font..."
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
+echo "[+] Downloading Ubuntu font..."
+cd $SCRIPTDLPATH
+dpkg -i ttf-ubuntu*.deb
+cd $OLDPWD
+
 echo "[+] Updating mate settings..."
 # Terminal 
 gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ scrollback-unlimited true	# unlimited terminal scrollback
@@ -117,6 +123,9 @@ gsettings set org.mate.background primary-color '#23231f1f2020'
 # Theme and fonts
 gsettings set org.mate.interface gtk-theme 'Ambiance-Orange'
 gsettings set org.mate.interface icon-theme 'ubuntu-mono-dark'
+gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance-Orange'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
+gsettings set org.mate.Marco.general theme 'Ambiance-Orange'
 gsettings set org.mate.caja.desktop font 'Ubuntu 11'
 gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
 gsettings set org.mate.interface font-name 'Ubuntu 11'

@@ -20,7 +20,7 @@
 SCRIPTDLPATH="scriptdls/"
 
 # Kali mirror you prefer, Australians can use AARNet
-KALIMIRROR="mirror.aarnet.edu.au/pub/kali"
+KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
 
 # We do VM detection later, default case it false, set manually to true if the 
 # detection fails for you
@@ -35,13 +35,13 @@ fi
 
 echo "[*] Improving Kali 2016.1"
 
-if [ `dmidecode | grep -iq virtual` -gt 0 ]
+if [ `dmidecode | grep -ic virtual` -gt 0 ]
 then
 	VM=true
 fi
 
 echo "[+] Setting preferred Kali mirror - $KALIMIRROR ..."
-sed -i s/http\.kali\.org/$KALIMIRROR/ /etc/apt/sources.list
+sed -i "s/http\.kali\.org/$KALIMIRROR/" /etc/apt/sources.list
 echo "[+] Updating repos from new mirror..."
 apt-get -qq update
 

@@ -78,7 +78,7 @@ echo "[+] Downloading wallpaper to ~/Pictures/kalibg.png"
 wget -q -O ~/Pictures/kalibg.png http://img11.deviantart.net/1cda/i/2015/294/f/b/kali_2_0__not_official__wallpaper_by_xxdigipxx-d9dw004.png
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients 
+apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass
 
 echo "[+] Installing pwntools..."
 pip install pwntools
@@ -98,12 +98,8 @@ wget -q -O ~/.msf5/plugins/pentest.rb https://raw.githubusercontent.com/darkoper
 echo "[+] Updating wpscan..."
 wpscan --update
 
-echo "[+] Downloading Ubuntu font..."
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
-echo "[+] Downloading Ubuntu font..."
-cd $SCRIPTDLPATH
-dpkg -i ttf-ubuntu*.deb
-cd $OLDPWD
+echo "[+] Downloading Ubuntu font. Install it manually once Mate is running as installing it in this script doesnt seem to work."
+wget -q -P /root/ http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
 
 echo "[+] Updating mate settings..."
 # Terminal 
@@ -124,13 +120,7 @@ gsettings set org.mate.background primary-color '#23231f1f2020'
 gsettings set org.mate.interface gtk-theme 'Ambiance-Orange'
 gsettings set org.mate.interface icon-theme 'ubuntu-mono-dark'
 gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance-Orange'
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
 gsettings set org.mate.Marco.general theme 'Ambiance-Orange'
-gsettings set org.mate.caja.desktop font 'Ubuntu 11'
-gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
-gsettings set org.mate.interface font-name 'Ubuntu 11'
-gsettings set org.mate.interface document-font-name 'Ubuntu 11'
-gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
 gsettings set org.mate.font-rendering antialiasing 'rgba'
 gsettings set org.mate.font-rendering hinting 'slight'
 

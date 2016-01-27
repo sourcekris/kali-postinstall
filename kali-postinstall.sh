@@ -82,6 +82,9 @@ wget -q -O ~/Pictures/kalibg.png http://img11.deviantart.net/1cda/i/2015/294/f/b
 echo "[+] Installing more packages..."
 apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass
 
+echo "[+] Enable vim syntax highlighting."
+echo "syntax on" >> ~/.vimrc
+
 echo "[+] Installing pwntools..."
 pip install pwntools
 

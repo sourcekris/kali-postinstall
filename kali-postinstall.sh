@@ -79,6 +79,9 @@ wget -q -P "$SCRIPTDLPATH" https://addons.mozilla.org/firefox/downloads/latest/5
 echo "[+] Downloading wallpaper to ~/Pictures/kalibg.png"
 wget -q -O ~/Pictures/kalibg.png http://img11.deviantart.net/1cda/i/2015/294/f/b/kali_2_0__not_official__wallpaper_by_xxdigipxx-d9dw004.png
 
+echo "[+] Downloading Ubuntu font package in case you wish to install it later..."
+wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
+
 echo "[+] Installing more packages..."
 apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass
 

@@ -83,13 +83,31 @@ echo "[+] Downloading Ubuntu font package in case you wish to install it later..
 wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass
+apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass libssl-dev pdfcrack tesseract-ocr
 
 echo "[+] Enable vim syntax highlighting."
 echo "syntax on" >> ~/.vimrc
 
 echo "[+] Installing pwntools..."
 pip install pwntools
+
+echo "[+] Installing xortool..."
+pip install xortool
+
+echo "[+] Installing gmpy..."
+pip install gmpy
+
+echo "[+] Installing sympy..."
+pip install sympy
+
+echo "[+] Installing sympy..."
+wget -O /usr/bin/Stegsolve.jar http://www.caesum.com/handbook/Stegsolve.jar
+chmod +x /usr/bin/Stegsolve.jar
+
+echo "[+] Installing highline..."
+gem install highline
+echo "[+] Installing zipruby..."
+gem install zipruby
 
 echo "[+] Installing PEDA..."
 git clone https://github.com/longld/peda.git ~/peda

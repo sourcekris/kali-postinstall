@@ -100,14 +100,22 @@ pip install gmpy
 echo "[+] Installing sympy..."
 pip install sympy
 
-echo "[+] Installing sympy..."
+echo "[+] Installing Stegosolve..."
 wget -O /usr/bin/Stegsolve.jar http://www.caesum.com/handbook/Stegsolve.jar
 chmod +x /usr/bin/Stegsolve.jar
 
 echo "[+] Installing highline..."
 gem install highline
+
 echo "[+] Installing zipruby..."
 gem install zipruby
+
+echo "[+] Cloning some important git repos..."
+mkdir gitrepos
+git clone https://github.com/BuffaloWill/oxml_xxe
+git clone https://github.com/danielmiessler/SecLists
+git clone https://github.com/sensepost/anapickle
+cd $OLDPWD
 
 echo "[+] Installing PEDA..."
 git clone https://github.com/longld/peda.git ~/peda

@@ -116,7 +116,10 @@ git clone https://github.com/BuffaloWill/oxml_xxe
 git clone https://github.com/danielmiessler/SecLists
 git clone https://github.com/sensepost/anapickle
 git clone https://github.com/hellman/libnum
-cd $OLDPWD
+cd libnum
+python setup.py install
+
+cd ../..
 
 echo "[+] Installing PEDA..."
 git clone https://github.com/longld/peda.git ~/peda

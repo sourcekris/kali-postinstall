@@ -115,6 +115,7 @@ mkdir gitrepos
 git clone https://github.com/BuffaloWill/oxml_xxe
 git clone https://github.com/danielmiessler/SecLists
 git clone https://github.com/sensepost/anapickle
+git clone https://github.com/hellman/libnum
 cd $OLDPWD
 
 echo "[+] Installing PEDA..."

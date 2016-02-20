@@ -19,8 +19,9 @@
 # Path to download packages, XPI's etc to
 SCRIPTDLPATH="scriptdls/"
 
-# Kali mirror you prefer, Australians can use AARNet
-KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
+# Kali mirror you prefer, Australians can use AARNet or Internode
+# KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
+KALIMIRROR="mirror\.internode\.on\.net\/pub"
 
 # We do VM detection later, default case it false, set manually to true if the 
 # detection fails for you
@@ -83,7 +84,7 @@ echo "[+] Downloading Ubuntu font package in case you wish to install it later..
 wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass libssl-dev pdfcrack tesseract-ocr
+apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients xchat sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev
 
 echo "[+] Enable vim syntax highlighting."
 echo "syntax on" >> ~/.vimrc

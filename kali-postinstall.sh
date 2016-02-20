@@ -20,8 +20,7 @@
 SCRIPTDLPATH="scriptdls/"
 
 # Kali mirror you prefer, Australians can use AARNet or Internode
-# KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
-KALIMIRROR="mirror\.internode\.on\.net\/pub"
+KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
 
 # We do VM detection later, default case it false, set manually to true if the 
 # detection fails for you

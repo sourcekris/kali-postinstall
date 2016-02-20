@@ -116,7 +116,14 @@ git clone https://github.com/BuffaloWill/oxml_xxe
 git clone https://github.com/danielmiessler/SecLists
 git clone https://github.com/sensepost/anapickle
 git clone https://github.com/hellman/libnum
+git clone https://github.com/CoreSecurity/impacket
+
+echo "[+] Setting up libnum..."
 cd libnum
+python setup.py install
+
+echo "[+] Setting up impacket..."
+cd ../impacket
 python setup.py install
 
 cd ../..
@@ -127,11 +134,6 @@ echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 echo "[+] Updating Metasploit..."
 msfupdate
-
-echo "[+] Installing pentest.rb into Metasploit plugins..."
-mkdir ~/.msf5/
-mkdir ~/.msf5/plugins
-wget -q -O ~/.msf5/plugins/pentest.rb https://raw.githubusercontent.com/darkoperator/Metasploit-Plugins/master/pentest.rb
 
 echo "[+] Updating wpscan..."
 wpscan --update

@@ -83,7 +83,7 @@ echo "[+] Downloading Ubuntu font package in case you wish to install it later..
 wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev
+apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
 
 echo "[+] Enable vim syntax highlighting."
 echo "syntax on" >> ~/.vimrc

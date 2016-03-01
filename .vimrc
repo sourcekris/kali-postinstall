@@ -23,7 +23,6 @@ set ignorecase
 set hlsearch
 set showmatch
 
-set list listchars=tab:>-,trail:.,extends:>
 set laststatus=2
 set cursorline
 

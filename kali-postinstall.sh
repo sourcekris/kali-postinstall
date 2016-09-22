@@ -1,11 +1,11 @@
 #!/bin/bash
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
-# Date: 2016-01-26
+# Date: 2016-09-22
 #-Notes--------------------------------------------------------------------
-# These are the things I do after install Kali 2016.1 on a new VM/System. 
+# These are the things I do after install Kali 2016.2 on a new VM/System. 
 #
-# Run this as root after an install of Kali 2016.
+# Run this as root after an install of Kali 2016.2
 # 
 # This is provided as-is and is not meant for others. However, you might 
 # find some of this stuff useful. Got some of these ideas from g0tm1lk,
@@ -33,7 +33,7 @@ then
 	exit 1
 fi
 
-echo "[*] Improving Kali 2016.1"
+echo "[*] Improving Kali 2016.2"
 
 if [ `dmidecode | grep -ic virtual` -gt 0 ]
 then
@@ -57,30 +57,24 @@ apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-env
 echo mate-session > ~/.xsession
 
 echo "[+] Downloading Ambiance themes..."
-mkdir scriptdls 2>/dev/null
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_14.04+15.10.20151001-0ubuntu1_all.deb
+mkdir "$SCRIPTDLPATH" 2>/dev/null
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20160908-0ubuntu1_all.deb
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20160908.orig.tar.gz
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
-wget -q -P "$SCRIPTDLPATH" https://launchpad.net/~ravefinity-project/+archive/ubuntu/ppa/+files/ambiance-colors_15.10.1~wily~NoobsLab.com_all.deb
 
 echo "[+] Installing themes and fonts..."
-cd $SCRIPTDLPATH
+cd "$SCRIPTDLPATH"
 dpkg -i humanity-icon*.deb
 dpkg -i ubuntu-mono*.deb
-dpkg -i ambiance-colors*.deb
+tar xf ubuntu-themes*tar.gz
+make
+cp -r Ambiance /usr/share/themes
 cd $OLDPWD
 
-echo "[+] Downloading firefox extensions..."
-wget -q -P "$SCRIPTDLPATH" https://addons.mozilla.org/firefox/downloads/latest/310783/addon-310783-latest.xpi
-wget -q -P "$SCRIPTDLPATH" https://addons.mozilla.org/firefox/downloads/latest/3899/addon-3899-latest.xpi
-wget -q -P "$SCRIPTDLPATH" https://addons.mozilla.org/firefox/downloads/latest/92079/addon-92079-latest.xpi
-wget -q -P "$SCRIPTDLPATH" https://addons.mozilla.org/firefox/downloads/latest/472577/addon-472577-latest.xpi
-wget -q -P "$SCRIPTDLPATH" https://addons.mozilla.org/firefox/downloads/latest/51740/platform:5/addon-51740-latest.xpi
-
-echo "[+] Downloading wallpaper to ~/Pictures/kalibg.png"
-wget -q -O ~/Pictures/kalibg.png http://img11.deviantart.net/1cda/i/2015/294/f/b/kali_2_0__not_official__wallpaper_by_xxdigipxx-d9dw004.png
+cp kalibg.png ~/Pictures
 
 echo "[+] Downloading Ubuntu font package in case you wish to install it later..."
-wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu1_all.deb
+wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu2_all.deb
 
 echo "[+] Installing more packages..."
 apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
@@ -113,7 +107,6 @@ gem install zipruby
 echo "[+] Cloning some important git repos..."
 mkdir gitrepos
 git clone https://github.com/BuffaloWill/oxml_xxe
-git clone https://github.com/danielmiessler/SecLists
 git clone https://github.com/sensepost/anapickle
 git clone https://github.com/hellman/libnum
 git clone https://github.com/CoreSecurity/impacket
@@ -154,18 +147,12 @@ gsettings set org.mate.background color-shading-type 'solid'
 gsettings set org.mate.background primary-color '#23231f1f2020'
 
 # Theme and fonts
-gsettings set org.mate.interface gtk-theme 'Ambiance-Orange'
+gsettings set org.mate.interface gtk-theme 'Ambiance'
 gsettings set org.mate.interface icon-theme 'ubuntu-mono-dark'
-gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance-Orange'
-gsettings set org.mate.Marco.general theme 'Ambiance-Orange'
+gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance'
+gsettings set org.mate.Marco.general theme 'Ambiance'
 gsettings set org.mate.font-rendering antialiasing 'rgba'
 gsettings set org.mate.font-rendering hinting 'slight'
 
-echo "[+] Upgrading packages..."
-APT_LISTCHANGES_FRONTEND=none apt-get -o Dpkg::Options::="--force-confnew" -y -qq upgrade
-
-echo "[+] Installing firefox extensions, go through the tabs and accept the installs..."
-cd "$SCRIPTDLPATH"
-firefox *.xpi
 rm -fr "$SCRIPTDLPATH"
 echo "[*] You need to reboot for the vmtools to take effect."

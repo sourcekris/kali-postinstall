@@ -56,31 +56,29 @@ echo "[+] Installing mate desktop and setting it to default Xsession..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
 echo mate-session > ~/.xsession
 
-echo "[+] Downloading Ambiance themes..."
+echo "[+] Downloading theme and fonts..."
 mkdir "$SCRIPTDLPATH" 2>/dev/null
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20160908-0ubuntu1_all.deb
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20160908.orig.tar.gz
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu2_all.deb
 
-echo "[+] Installing themes and fonts..."
+echo "[+] Installing theme and fonts..."
 cd "$SCRIPTDLPATH"
 dpkg -i humanity-icon*.deb
 dpkg -i ubuntu-mono*.deb
+dpkg -i ttf-ubuntu-font*deb
 tar xf ubuntu-themes*tar.gz
 make
 cp -r Ambiance /usr/share/themes
 cd $OLDPWD
-
-cp kalibg.png ~/Pictures
-
-echo "[+] Downloading Ubuntu font package in case you wish to install it later..."
-wget -q -P "$HOME" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu2_all.deb
+cp themefiles/gtk-main.css /usr/share/themes/Ambiance
+cp themefiles/mate-applications.css /usr/share/themes/Ambiance
+cp themefiles/kalibg.png ~/Pictures
+cp .vimrc ~
 
 echo "[+] Installing more packages..."
 apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
-
-echo "[+] Enable vim syntax highlighting."
-echo "syntax on" >> ~/.vimrc
 
 echo "[+] Installing pwntools..."
 pip install pwntools

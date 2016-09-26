@@ -122,12 +122,14 @@ MatePanelAppletFrameDBus {
 
 /* set selected menubar button */
 .mate-panel-menu-bar menuitem:hover {
+    background-color: @fg_color;
 }
 
 /* set selected menubar menuitem */
 .mate-panel-menu-bar menu menuitem:checked:hover,
 .mate-panel-menu-bar menu menuitem:active:hover,
 .mate-panel-menu-bar menu menuitem:hover {
+    background-color: @selected_bg_color;
 }
 
 /* hide buttons by default */

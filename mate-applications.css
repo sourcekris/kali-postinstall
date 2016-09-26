@@ -225,10 +225,11 @@ dictionary */
     border-radius: 3px;
     color: @theme_fg_color;
     border-style: solid;
-    background-image: linear-gradient(to bottom,
+    background-color: #252525;
+    /*background-image: linear-gradient(to bottom,
                                       shade(@button_gradient_color_b, 0.7),
-                                      @theme_bg_color 50%,
-                                      shade(@button_gradient_color_a, 1.5));
+                                      @theme_bg_color 80%,
+                                      shade(#111111, 1.5));*/
 }
 
 .mate-panel-menu-bar button .button:hover {

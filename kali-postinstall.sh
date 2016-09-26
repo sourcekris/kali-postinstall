@@ -151,6 +151,9 @@ gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance'
 gsettings set org.mate.Marco.general theme 'Ambiance'
 gsettings set org.mate.font-rendering antialiasing 'rgba'
 gsettings set org.mate.font-rendering hinting 'slight'
+gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
+gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
+gsettings set org.mate.interface font-name 'Ubuntu 11'
 
 rm -fr "$SCRIPTDLPATH"
 echo "[*] You need to reboot for the vmtools to take effect."

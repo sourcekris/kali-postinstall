@@ -72,8 +72,8 @@ tar xf ubuntu-themes*tar.gz
 make
 cp -r Ambiance /usr/share/themes
 cd $OLDPWD
-cp themefiles/gtk-main.css /usr/share/themes/Ambiance
-cp themefiles/mate-applications.css /usr/share/themes/Ambiance
+cp themefiles/gtk-main.css /usr/share/themes/Ambiance/gtk-3.20
+cp themefiles/mate-applications.css /usr/share/themes/Ambiance/gtk-3.20
 cp themefiles/kalibg.png ~/Pictures
 cp .vimrc ~
 

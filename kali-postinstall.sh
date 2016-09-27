@@ -26,6 +26,11 @@ KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
 # detection fails for you
 VM=false
 
+# Terminal Palette
+TERMPAL="#000000000000:#CDCB00000000:#0000CDCB0000:#CDCBCDCB0000:#1E1A908FFFFF:#CDCB0000CDCB:#0000CDCBCDCB:#E5E2E5E2E5E2:#4CCC4CCC4CCC:#FFFF00000000:#0000FFFF0000:#FFFFFFFF0000:#46458281B4AE:#FFFF0000FFFF:#0000FFFFFFFF:#FFFFFFFFFFFF"
+TERMBG="#000000000000"
+TERMFG="#FFFFFFFFDDDD"
+
 # Check we're root
 if [ $EUID -ne 0 ]
 then
@@ -133,6 +138,12 @@ echo "[+] Updating mate settings..."
 # Terminal 
 gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ scrollback-unlimited true	# unlimited terminal scrollback
 gsettings set org.mate.terminal.keybindings help 'disabled' # hate hitting help accidently, noone cares
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ background-color $TERMBG
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ foreground-color $TERMFG
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ palette $TERMPAL
+
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ use-theme-colors false
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ bold-color-same-as-fg false
 
 # Disable screensavers!
 gsettings set org.mate.screensaver idle-activation-enabled false	# disable screensave
@@ -154,6 +165,7 @@ gsettings set org.mate.font-rendering hinting 'slight'
 gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
 gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
 gsettings set org.mate.interface font-name 'Ubuntu 11'
+gsettings set org.mate.caja.desktop font 'Ubuntu 11'
 
 rm -fr "$SCRIPTDLPATH"
 echo "[*] You need to reboot for the vmtools to take effect."

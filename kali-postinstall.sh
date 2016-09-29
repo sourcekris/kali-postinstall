@@ -2,6 +2,7 @@
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
 # Date: 2016-09-22
+# Version: 2016.2
 #-Notes--------------------------------------------------------------------
 # These are the things I do after install Kali 2016.2 on a new VM/System. 
 #

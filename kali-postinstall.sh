@@ -66,13 +66,15 @@ mkdir "$SCRIPTDLPATH" 2>/dev/null
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20160908-0ubuntu1_all.deb
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20160908.orig.tar.gz
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-font-family-sources/ttf-ubuntu-font-family_0.83-0ubuntu2_all.deb
+wget -q -P "$SCRIPTDLPATH" http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
 
 echo "[+] Installing theme and fonts..."
 cd "$SCRIPTDLPATH"
 dpkg -i humanity-icon*.deb
 dpkg -i ubuntu-mono*.deb
-dpkg -i ttf-ubuntu-font*deb
+unzip ubuntu-font-family-0.83.zip
+cp -r ubuntu-font-family-0.83 /usr/share/fonts/truetype/ttf-ubuntu
+fc-cache -f
 tar xf ubuntu-themes*tar.gz
 make
 cp -r Ambiance /usr/share/themes

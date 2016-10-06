@@ -64,8 +64,8 @@ echo mate-session > ~/.xsession
 
 echo "[+] Downloading theme and fonts..."
 mkdir "$SCRIPTDLPATH" 2>/dev/null
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20160908-0ubuntu1_all.deb
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20160908.orig.tar.gz
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20161005-0ubuntu1_all.deb
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20161005.orig.tar.gz
 wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
 wget -q -P "$SCRIPTDLPATH" http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
 

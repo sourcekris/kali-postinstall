@@ -32,6 +32,14 @@ TERMPAL="#000000000000:#CDCB00000000:#0000CDCB0000:#CDCBCDCB0000:#1E1A908FFFFF:#
 TERMBG="#000000000000"
 TERMFG="#FFFFFFFFDDDD"
 
+# People were running "sh kali-postinstall.sh" and this broke tests
+if test $_ = "/bin/sh"
+then
+    echo "Found to be running in /bin/sh. Its better to run this script in /bin/bash"
+    echo "Usage: ./$0"
+    exit
+fi
+
 # Check we're root
 if [ $EUID -ne 0 ]
 then

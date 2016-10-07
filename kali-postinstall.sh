@@ -33,7 +33,7 @@ TERMBG="#000000000000"
 TERMFG="#FFFFFFFFDDDD"
 
 # People were running "sh kali-postinstall.sh" and this broke tests
-if test $_ = "/bin/sh"
+if test "$_" = "/bin/sh"
 then
     echo "Found to be running in /bin/sh. Its better to run this script in /bin/bash"
     echo "Usage: ./$0"
@@ -44,7 +44,18 @@ fi
 if [ $EUID -ne 0 ]
 then
 	echo "[-] This script must be run as root." 
-	exit 1
+	exit
+fi
+
+# Test for GTK newer than 3.20 because we dont support it yet
+GOODGTK=3.20
+CURRENTGTK=`dpkg -l libgtk-3-0 | tail -1 | cut -d " " -f 4 | awk -F'.' '{print $1"."$2}'`
+GTKOK=`awk -v good=$GOODGTK -v current=$CURRENTGTK 'BEGIN { if(current > good) printf("0"); else printf("1")}'`
+
+if [ "$GTKOK" -eq 0 ]
+then
+    echo "[-] GTK version $CURRENTGTK detected. We work on $GOODGTK only."
+    exit
 fi
 
 echo "[*] Improving Kali 2016.2"

@@ -1,3 +1,6 @@
+# Note: 
+This is currently not recommended for use on Kali. Since GTK has moved on in versions I've not found an acceptable looking and functional theme for Kali that I've wanted to use with it. So I stopped updating it and moved off of Kali Linux.
+
 Kali Post-Install
 -----------------
 

@@ -1,12 +1,12 @@
 #!/bin/bash
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
-# Date: 2016-09-22
-# Version: 2016.2
+# Date: 2017-11-30
+# Version: 2017.3
 #-Notes--------------------------------------------------------------------
-# These are the things I do after install Kali 2016.2 on a new VM/System. 
+# These are the things I do after install Kali 2017.3 on a new VM/System. 
 #
-# Run this as root after an install of Kali 2016.2
+# Run this as root after an install of Kali 2017.3
 # 
 # This is provided as-is and is not meant for others. However, you might 
 # find some of this stuff useful. Got some of these ideas from g0tm1lk,
@@ -16,6 +16,7 @@
 #
 # Tweet @CTFKris for ideas to add to this.
 #
+VERSION=2017.3
 
 # Path to download packages, XPI's etc to
 SCRIPTDLPATH="scriptdls/"
@@ -47,18 +48,7 @@ then
 	exit
 fi
 
-# Test for GTK newer than 3.20 because we dont support it yet
-GOODGTK=3.20
-CURRENTGTK=`dpkg -l libgtk-3-0 | tail -1 | cut -d " " -f 4 | awk -F'.' '{print $1"."$2}'`
-GTKOK=`awk -v good=$GOODGTK -v current=$CURRENTGTK 'BEGIN { if(current > good) printf("0"); else printf("1")}'`
-
-if [ "$GTKOK" -eq 0 ]
-then
-    echo "[-] GTK version $CURRENTGTK detected. We work on $GOODGTK only."
-    exit
-fi
-
-echo "[*] Improving Kali 2016.2"
+echo "[*] Improving Kali $VERSION"
 
 if [ `dmidecode | grep -ic virtual` -gt 0 ]
 then
@@ -77,6 +67,7 @@ then
 else
 	echo "[*] Virtual machine NOT detected, skipping vmtools installation..."
 fi
+exit
 echo "[+] Installing mate desktop and setting it to default Xsession..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
 echo mate-session > ~/.xsession

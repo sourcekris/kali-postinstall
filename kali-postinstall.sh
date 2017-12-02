@@ -67,10 +67,17 @@ fi
 echo "[+] Installing mate desktop..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
 
+echo "[+] Installing font..."
+wget -q https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
+unzip fad7939b-ubuntu-font-family-0.83.zip
+cp -r ubuntu-font-family-0.83 /usr/share/fonts/truetype/ttf-ubuntu
+fc-cache -f
+
+cp themefiles/kalibg.png /root/Pictures
 cp .vimrc ~
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
+apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace metasploit-framework
 
 echo "[+] Installing pwntools..."
 pip install pwntools
@@ -115,9 +122,6 @@ echo "[+] Installing PEDA..."
 git clone https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
-echo "[+] Updating Metasploit..."
-msfupdate
-
 echo "[+] Updating wpscan..."
 wpscan --update
 
@@ -149,7 +153,7 @@ gsettings set org.mate.background primary-color '#23231f1f2020'
 #gsettings set org.mate.Marco.general theme 'Ambiance'
 #gsettings set org.mate.font-rendering antialiasing 'rgba'
 #gsettings set org.mate.font-rendering hinting 'slight'
-#gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
-#gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
-#gsettings set org.mate.interface font-name 'Ubuntu 11'
-#gsettings set org.mate.caja.desktop font 'Ubuntu 11'
+gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
+gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
+gsettings set org.mate.interface font-name 'Ubuntu 11'
+gsettings set org.mate.caja.desktop font 'Ubuntu 11'

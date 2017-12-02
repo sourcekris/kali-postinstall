@@ -18,9 +18,6 @@
 #
 VERSION=2017.3
 
-# Path to download packages, XPI's etc to
-SCRIPTDLPATH="scriptdls/"
-
 # Kali mirror you prefer, Australians can use AARNet or Internode
 KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
 
@@ -67,32 +64,9 @@ then
 else
 	echo "[*] Virtual machine NOT detected, skipping vmtools installation..."
 fi
-exit
-echo "[+] Installing mate desktop and setting it to default Xsession..."
+echo "[+] Installing mate desktop..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
-echo mate-session > ~/.xsession
 
-echo "[+] Downloading theme and fonts..."
-mkdir "$SCRIPTDLPATH" 2>/dev/null
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20161005-0ubuntu1_all.deb
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20161005.orig.tar.gz
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
-wget -q -P "$SCRIPTDLPATH" http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
-
-echo "[+] Installing theme and fonts..."
-cd "$SCRIPTDLPATH"
-dpkg -i humanity-icon*.deb
-dpkg -i ubuntu-mono*.deb
-unzip ubuntu-font-family-0.83.zip
-cp -r ubuntu-font-family-0.83 /usr/share/fonts/truetype/ttf-ubuntu
-fc-cache -f
-tar xf ubuntu-themes*tar.gz
-make
-cp -r Ambiance /usr/share/themes
-cd $OLDPWD
-cp themefiles/gtk-main.css /usr/share/themes/Ambiance/gtk-3.20
-cp themefiles/mate-applications.css /usr/share/themes/Ambiance/gtk-3.20
-cp themefiles/kalibg.png ~/Pictures
 cp .vimrc ~
 
 echo "[+] Installing more packages..."
@@ -169,16 +143,13 @@ gsettings set org.mate.background color-shading-type 'solid'
 gsettings set org.mate.background primary-color '#23231f1f2020'
 
 # Theme and fonts
-gsettings set org.mate.interface gtk-theme 'Ambiance'
-gsettings set org.mate.interface icon-theme 'ubuntu-mono-dark'
-gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance'
-gsettings set org.mate.Marco.general theme 'Ambiance'
-gsettings set org.mate.font-rendering antialiasing 'rgba'
-gsettings set org.mate.font-rendering hinting 'slight'
-gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
-gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
-gsettings set org.mate.interface font-name 'Ubuntu 11'
-gsettings set org.mate.caja.desktop font 'Ubuntu 11'
-
-rm -fr "$SCRIPTDLPATH"
-echo "[*] You need to reboot for the vmtools to take effect."
+#gsettings set org.mate.interface gtk-theme 'Ambiance'
+#gsettings set org.mate.interface icon-theme 'ubuntu-mono-dark'
+#gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance'
+#gsettings set org.mate.Marco.general theme 'Ambiance'
+#gsettings set org.mate.font-rendering antialiasing 'rgba'
+#gsettings set org.mate.font-rendering hinting 'slight'
+#gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
+#gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
+#gsettings set org.mate.interface font-name 'Ubuntu 11'
+#gsettings set org.mate.caja.desktop font 'Ubuntu 11'

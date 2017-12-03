@@ -18,6 +18,9 @@
 #
 VERSION=2017.3
 
+# Path to download packages
+SCRIPTDLPATH="scriptdls/"
+
 # Kali mirror you prefer, Australians can use AARNet or Internode
 KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
 
@@ -67,11 +70,22 @@ fi
 echo "[+] Installing mate desktop..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
 
-echo "[+] Installing font..."
-wget -q https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
+echo "[+] Installing theme and fonts..."
+mkdir "$SCRIPTDLPATH" 2>/dev/null
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+18.04.20171115.1-0ubuntu1_all.deb
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+18.04.20171115.1.orig.tar.gz
+wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.13_all.deb
+wget -q -P "$SCRIPTDLPATH" https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
+cd "$SCRIPTDLPATH"
+dpkg -i humanity-icon*.deb
+dpkg -i ubuntu-mono*.deb
 unzip fad7939b-ubuntu-font-family-0.83.zip
 cp -r ubuntu-font-family-0.83 /usr/share/fonts/truetype/ttf-ubuntu
 fc-cache -f
+tar xf ubuntu-themes*tar.gz
+make
+cp -r Ambiance /usr/share/themes
+cd $OLDPWD
 
 cp themefiles/kalibg.png /root/Pictures
 cp .vimrc ~
@@ -157,3 +171,5 @@ gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
 gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
 gsettings set org.mate.interface font-name 'Ubuntu 11'
 gsettings set org.mate.caja.desktop font 'Ubuntu 11'
+
+rm -fr "$SCRIPTDLPATH"

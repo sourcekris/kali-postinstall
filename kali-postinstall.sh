@@ -112,7 +112,7 @@ echo "[+] Installing sympy..."
 pip install sympy
 
 echo "[+] Installing Stegosolve..."
-wget -O /usr/bin/Stegsolve.jar http://www.caesum.com/handbook/Stegsolve.jar
+wget -q -O /usr/bin/Stegsolve.jar http://www.caesum.com/handbook/Stegsolve.jar
 chmod +x /usr/bin/Stegsolve.jar
 
 echo "[+] Installing highline..."
@@ -143,12 +143,10 @@ git clone https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 echo "[+] Updating Metasploit..."
-apt-get -y -qq install metasploit
+apt-get -y -qq install metasploit-framework
 
 echo "[+] Updating wpscan..."
 wpscan --update
-
-exit
 
 echo "[+] Updating mate settings..."
 # Terminal 
@@ -167,15 +165,15 @@ gsettings set org.mate.power-manager sleep-display-ac 0				# disable screen slee
 
 # Wallpaper settings
 gsettings set org.mate.background picture-options 'centered'		# set wallpaper options
-gsettings set org.mate.background picture-filename '/root/Pictures/kalibg.png'
+gsettings set org.mate.background picture-filename '/usr/share/backgrounds/kalibg.png'
 gsettings set org.mate.background color-shading-type 'solid'
 gsettings set org.mate.background primary-color '#23231f1f2020'
 
 # Theme and fonts
-gsettings set org.mate.interface gtk-theme 'Ambiance'
-gsettings set org.mate.interface icon-theme 'ubuntu-mono-dark'
-gsettings set org.gnome.desktop.wm.preferences theme 'Ambiance'
-gsettings set org.mate.Marco.general theme 'Ambiance'
+gsettings set org.mate.interface gtk-theme 'Arc-Dark'
+gsettings set org.mate.interface icon-theme 'Humanity-Dark'
+gsettings set org.gnome.desktop.wm.preferences theme 'Arc-Dark'
+gsettings set org.mate.Marco.general theme 'Arc-Dark'
 gsettings set org.mate.font-rendering antialiasing 'rgba'
 gsettings set org.mate.font-rendering hinting 'slight'
 gsettings set org.mate.Marco.general titlebar-font 'Ubuntu Medium 11'
@@ -184,4 +182,4 @@ gsettings set org.mate.interface font-name 'Ubuntu 11'
 gsettings set org.mate.caja.desktop font 'Ubuntu 11'
 
 rm -fr "$SCRIPTDLPATH"
-echo "[*] You need to reboot for the vmtools to take effect."
+echo "[*] You need to reboot for the theme, MATE Xsession, and VM tools to take effect."

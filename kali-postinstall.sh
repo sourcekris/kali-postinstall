@@ -17,6 +17,8 @@
 # Tweet @CTFKris for ideas to add to this.
 #
 
+VERSION="2018.2"
+
 # Path to download packages, XPI's etc to
 SCRIPTDLPATH="scriptdls/"
 
@@ -47,7 +49,7 @@ then
 	exit
 fi
 
-echo "[*] Improving Kali 2018.2"
+echo "[*] Improving Kali $VERSION"
 
 if [[ `dmidecode | grep -ic virtual` -gt 0 ]]
 then
@@ -57,7 +59,7 @@ fi
 echo "[+] Setting preferred Kali mirror - $KALIMIRROR ..."
 sed -i "s/http\.kali\.org/$KALIMIRROR/" /etc/apt/sources.list
 
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-get add -
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list
 
 echo "[+] Updating repos from new mirror..."
@@ -70,27 +72,28 @@ then
 else
 	echo "[*] Virtual machine NOT detected, skipping vmtools installation..."
 fi
-echo "[+] Installing mate desktop and setting it to default Xsession..."
+echo "[+] Installing mate desktop and theme pre-reqs..."
 apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras autoconf automake pkg-config libgtk-3-dev gnome-themes-standard gtk2-engines-murrine sublime-text
 
-echo "[+] Downloading theme and fonts..."
+echo "[+] Downloading themes, icons and fonts..."
 mkdir "$SCRIPTDLPATH" 2>/dev/null
 wget -q -O "$SCRIPTDLPATH/font.zip" https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
-wget -q -O "$SCRIPTDLPATH/icons.deb" https://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
+wget -q -O "$SCRIPTDLPATH/icons.deb" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.15_all.deb
 git clone https://github.com/horst3180/arc-theme --depth 1 "$SCRIPTDLPATH/arc-theme"
 
-echo "[+] Installing theme and fonts..."
+echo "[+] Installing theme, icons and fonts..."
 cd "$SCRIPTDLPATH"
 dpkg -i icons.deb
 unzip -d /usr/share/fonts/truetype/ttf-ubuntu font.zip
 fc-cache -f
 
+## Build and install arc-theme
 cd arc-theme
 ./autogen.sh --prefix=/usr
 make install
 
 cd ../..
-cp themefiles/kalibg.png ~/Pictures
+cp themefiles/kalibg.png /usr/share/backgrounds
 cp .vimrc ~
 
 exit

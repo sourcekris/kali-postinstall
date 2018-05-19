@@ -1,12 +1,12 @@
 #!/bin/bash
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
-# Date: 2016-09-22
-# Version: 2016.2
+# Date: 2018-05-19
+# Version: 2018.2
 #-Notes--------------------------------------------------------------------
-# These are the things I do after install Kali 2016.2 on a new VM/System. 
+# These are the things I do after install Kali 2018.2 on a new VM/System. 
 #
-# Run this as root after an install of Kali 2016.2
+# Run this as root after an install of Kali 2018.2
 # 
 # This is provided as-is and is not meant for others. However, you might 
 # find some of this stuff useful. Got some of these ideas from g0tm1lk,
@@ -21,7 +21,7 @@
 SCRIPTDLPATH="scriptdls/"
 
 # Kali mirror you prefer, Australians can use AARNet or Internode
-KALIMIRROR="mirror\.aarnet\.edu\.au\/pub\/kali"
+KALIMIRROR="ftp\.iinet\.net\.au\/pub"
 
 # We do VM detection later, default case it false, set manually to true if the 
 # detection fails for you
@@ -41,32 +41,25 @@ then
 fi
 
 # Check we're root
-if [ $EUID -ne 0 ]
+if [[ $EUID -ne 0 ]]
 then
 	echo "[-] This script must be run as root." 
 	exit
 fi
 
-# Test for GTK newer than 3.20 because we dont support it yet
-GOODGTK=3.20
-CURRENTGTK=`dpkg -l libgtk-3-0 | tail -1 | cut -d " " -f 4 | awk -F'.' '{print $1"."$2}'`
-GTKOK=`awk -v good=$GOODGTK -v current=$CURRENTGTK 'BEGIN { if(current > good) printf("0"); else printf("1")}'`
+echo "[*] Improving Kali 2018.2"
 
-if [ "$GTKOK" -eq 0 ]
-then
-    echo "[-] GTK version $CURRENTGTK detected. We work on $GOODGTK only."
-    exit
-fi
-
-echo "[*] Improving Kali 2016.2"
-
-if [ `dmidecode | grep -ic virtual` -gt 0 ]
+if [[ `dmidecode | grep -ic virtual` -gt 0 ]]
 then
 	VM=true
 fi
 
 echo "[+] Setting preferred Kali mirror - $KALIMIRROR ..."
 sed -i "s/http\.kali\.org/$KALIMIRROR/" /etc/apt/sources.list
+
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-get add -
+echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list
+
 echo "[+] Updating repos from new mirror..."
 apt-get -qq update
 
@@ -78,31 +71,29 @@ else
 	echo "[*] Virtual machine NOT detected, skipping vmtools installation..."
 fi
 echo "[+] Installing mate desktop and setting it to default Xsession..."
-apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras 
-echo mate-session > ~/.xsession
+apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-environment-extras autoconf automake pkg-config libgtk-3-dev gnome-themes-standard gtk2-engines-murrine sublime-text
 
 echo "[+] Downloading theme and fonts..."
 mkdir "$SCRIPTDLPATH" 2>/dev/null
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-mono_16.10+16.10.20161005-0ubuntu1_all.deb
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/u/ubuntu-themes/ubuntu-themes_16.10+16.10.20161005.orig.tar.gz
-wget -q -P "$SCRIPTDLPATH" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.10_all.deb
-wget -q -P "$SCRIPTDLPATH" http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
+wget -q -O "$SCRIPTDLPATH/font.zip" https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
+wget -q -O "$SCRIPTDLPATH/icons.deb" https://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
+git clone https://github.com/horst3180/arc-theme --depth 1 "$SCRIPTDLPATH/arc-theme"
 
 echo "[+] Installing theme and fonts..."
 cd "$SCRIPTDLPATH"
-dpkg -i humanity-icon*.deb
-dpkg -i ubuntu-mono*.deb
-unzip ubuntu-font-family-0.83.zip
-cp -r ubuntu-font-family-0.83 /usr/share/fonts/truetype/ttf-ubuntu
+dpkg -i icons.deb
+unzip -d /usr/share/fonts/truetype/ttf-ubuntu font.zip
 fc-cache -f
-tar xf ubuntu-themes*tar.gz
-make
-cp -r Ambiance /usr/share/themes
-cd $OLDPWD
-cp themefiles/gtk-main.css /usr/share/themes/Ambiance/gtk-3.20
-cp themefiles/mate-applications.css /usr/share/themes/Ambiance/gtk-3.20
+
+cd arc-theme
+./autogen.sh --prefix=/usr
+make install
+
+cd ../..
 cp themefiles/kalibg.png ~/Pictures
 cp .vimrc ~
+
+exit
 
 echo "[+] Installing more packages..."
 apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace

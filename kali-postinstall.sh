@@ -96,8 +96,6 @@ cd ../..
 cp themefiles/kalibg.png /usr/share/backgrounds
 cp .vimrc ~
 
-exit
-
 echo "[+] Installing more packages..."
 apt-get -y -qq install gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
 
@@ -145,10 +143,12 @@ git clone https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 echo "[+] Updating Metasploit..."
-msfupdate
+apt-get -y -qq install metasploit
 
 echo "[+] Updating wpscan..."
 wpscan --update
+
+exit
 
 echo "[+] Updating mate settings..."
 # Terminal 

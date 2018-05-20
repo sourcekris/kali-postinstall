@@ -77,14 +77,14 @@ apt-get -y -qq install mate-core mate-desktop-environment-extra mate-desktop-env
 
 echo "[+] Downloading themes, icons and fonts..."
 mkdir "$SCRIPTDLPATH" 2>/dev/null
-wget -q -O "$SCRIPTDLPATH/font.zip" https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
-wget -q -O "$SCRIPTDLPATH/icons.deb" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.15_all.deb
-git clone https://github.com/horst3180/arc-theme --depth 1 "$SCRIPTDLPATH/arc-theme"
+wget -qO "$SCRIPTDLPATH/font.zip" https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip
+wget -qO "$SCRIPTDLPATH/icons.deb" http://ftp.iinet.net.au/pub/ubuntu/pool/main/h/humanity-icon-theme/humanity-icon-theme_0.6.15_all.deb
+git clone -q https://github.com/horst3180/arc-theme --depth 1 "$SCRIPTDLPATH/arc-theme"
 
 echo "[+] Installing theme, icons and fonts..."
 cd "$SCRIPTDLPATH"
 dpkg -i icons.deb
-unzip -d /usr/share/fonts/truetype/ttf-ubuntu font.zip
+unzip -qq -d /usr/share/fonts/truetype/ttf-ubuntu font.zip
 fc-cache -f
 
 ## Build and install arc-theme
@@ -112,21 +112,21 @@ echo "[+] Installing sympy..."
 pip install sympy
 
 echo "[+] Installing Stegosolve..."
-wget -q -O /usr/bin/Stegsolve.jar http://www.caesum.com/handbook/Stegsolve.jar
+wget -qO /usr/bin/Stegsolve.jar http://www.caesum.com/handbook/Stegsolve.jar
 chmod +x /usr/bin/Stegsolve.jar
 
 echo "[+] Installing highline..."
-gem install highline
+gem install --silent highline
 
 echo "[+] Installing zipruby..."
-gem install zipruby
+gem install --silent zipruby
 
 echo "[+] Cloning some important git repos..."
 mkdir gitrepos
-git clone https://github.com/BuffaloWill/oxml_xxe
-git clone https://github.com/sensepost/anapickle
-git clone https://github.com/hellman/libnum
-git clone https://github.com/CoreSecurity/impacket
+git clone -q https://github.com/BuffaloWill/oxml_xxe
+git clone -q https://github.com/sensepost/anapickle
+git clone -q https://github.com/hellman/libnum
+git clone -q https://github.com/CoreSecurity/impacket
 
 echo "[+] Setting up libnum..."
 cd libnum
@@ -139,7 +139,7 @@ python setup.py install
 cd ../..
 
 echo "[+] Installing PEDA..."
-git clone https://github.com/longld/peda.git ~/peda
+git clone -q https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 echo "[+] Updating Metasploit..."
@@ -182,4 +182,5 @@ gsettings set org.mate.interface font-name 'Ubuntu 11'
 gsettings set org.mate.caja.desktop font 'Ubuntu 11'
 
 rm -fr "$SCRIPTDLPATH"
-echo "[*] You need to reboot for the theme, MATE Xsession, and VM tools to take effect."
+echo "[*] You need to reboot for the theme, MATE Xsession, and VM tools to fully take effect."
+printf "[*] Before logging in, click the gear (\\u2699 ) icon on the password prompt and select MATE\n"

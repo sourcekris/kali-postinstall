@@ -181,6 +181,9 @@ gsettings set org.mate.interface monospace-font-name 'Ubuntu Mono 13'
 gsettings set org.mate.interface font-name 'Ubuntu 11'
 gsettings set org.mate.caja.desktop font 'Ubuntu 11'
 
+echo "[+] Upgrading all packages..."
+apt-get -y upgrade
+
 rm -fr "$SCRIPTDLPATH"
 echo "[*] You need to reboot for the theme, MATE Xsession, and VM tools to fully take effect."
 printf "[*] Before logging in, click the gear (\\u2699 ) icon on the password prompt and select MATE\n"

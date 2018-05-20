@@ -12,7 +12,7 @@
 
 import subprocess
 
-apps = [ 'mate-terminal', 'iceweasel', 'kali-wireshark','kali-msfconsole',
+apps = [ 'mate-terminal', 'firefox-esr', 'kali-wireshark','kali-msfconsole',
 	 'kali-zaproxy', 'kali-burpsuite', 'kali-zenmap', 'sublime_text' ]
 
 print "[*] Fetching current panel objects..."

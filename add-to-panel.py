@@ -13,7 +13,7 @@
 import subprocess
 
 apps = [ 'mate-terminal', 'iceweasel', 'kali-wireshark','kali-msfconsole',
-	 'kali-zaproxy', 'kali-burpsuite', 'kali-zenmap' ]
+	 'kali-zaproxy', 'kali-burpsuite', 'kali-zenmap', 'sublime_text' ]
 
 print "[*] Fetching current panel objects..."
 gsettings = subprocess.check_output(['gsettings','get','org.mate.panel','object-id-list']).strip()

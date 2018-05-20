@@ -7,6 +7,10 @@ Added add-to-panel.py which just simplifies adding bulk shortcuts to the Kali Ma
 
 Tweet @CTFKris for ideas.
 
+### Screenshot
+
+![screenshot](https://github.com/sourcekris/kali-postinstall/raw/master/kali-postinstall.png)
+
 ### Changelog
 
 #### v2018.2

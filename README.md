@@ -1,7 +1,7 @@
 Kali Post-Install
 -----------------
 
-A script to more easily setup a new Kali 2018.2 + w/MATE and Arc-theme and additional tools installed. This is now working again after 2018.2 released now that GTK themes are starting to come out that support GTK 3.21+ properly.
+A script to more easily setup a new Kali 2018.3a + w/MATE and Arc-theme and additional tools installed. 
 
 Added add-to-panel.py which just simplifies adding bulk shortcuts to the Kali Mate top panel like in Kali 1.0 days :)
 
@@ -12,6 +12,9 @@ Tweet @CTFKris for ideas.
 ![screenshot](https://github.com/sourcekris/kali-postinstall/raw/master/kali-postinstall.png)
 
 ### Changelog
+
+#### v2018.3a
+ - Updated for Kali 2018.3a which comes with GTK 3.24
 
 #### v2018.2
 

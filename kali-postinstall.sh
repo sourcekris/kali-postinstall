@@ -1,12 +1,12 @@
 #!/bin/bash
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
-# Date: 2018-05-19
-# Version: 2018.2
+# Date: 2018-09-23
+# Version: 2018.3a
 #-Notes--------------------------------------------------------------------
-# These are the things I do after install Kali 2018.2 on a new VM/System. 
+# These are the things I do after install Kali on a new VM/System. 
 #
-# Run this as root after an install of Kali 2018.2
+# Run this as root after an install of Kali 
 # 
 # This is provided as-is and is not meant for others. However, you might 
 # find some of this stuff useful. Got some of these ideas from g0tm1lk,
@@ -17,7 +17,7 @@
 # Tweet @CTFKris for ideas to add to this.
 #
 
-VERSION="2018.2"
+VERSION="2018.3a"
 
 # Path to download packages, XPI's etc to
 SCRIPTDLPATH="scriptdls/"

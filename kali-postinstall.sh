@@ -89,7 +89,7 @@ fc-cache -f
 
 ## Build and install arc-theme
 cd arc-theme
-./autogen.sh --prefix=/usr --with-gnome-version=3.22
+./autogen.sh --prefix=/usr --with-gnome=3.22
 make install
 
 cd ../..

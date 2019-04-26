@@ -1,8 +1,8 @@
 #!/bin/bash
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
-# Date: 2018-09-23
-# Version: 2018.3a
+# Date: 2019-04-26
+# Version: 2019.1a
 #-Notes--------------------------------------------------------------------
 # These are the things I do after install Kali on a new VM/System. 
 #
@@ -17,7 +17,7 @@
 # Tweet @CTFKris for ideas to add to this.
 #
 
-VERSION="2018.3a"
+VERSION="2019.1a"
 
 # Path to download packages, XPI's etc to
 SCRIPTDLPATH="scriptdls/"

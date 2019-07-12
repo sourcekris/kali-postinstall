@@ -1,7 +1,7 @@
 Kali Post-Install
 -----------------
 
-A script to more easily setup a new Kali 2019.1a + w/MATE and Arc-theme and additional tools installed. 
+A script to more easily setup a new Kali 2019.2 + w/MATE and Arc-theme and additional tools installed. 
 
 Added add-to-panel.py which just simplifies adding bulk shortcuts to the Kali Mate top panel like in Kali 1.0 days :)
 
@@ -12,6 +12,9 @@ Tweet @CTFKris for ideas.
 ![screenshot](https://github.com/sourcekris/kali-postinstall/raw/master/kali-postinstall.png)
 
 ### Changelog
+
+#### 2019.2
+ - Bumped version number, no functional changes.
 
 #### 2019.1a
  - Bumped version number, no functional changes.

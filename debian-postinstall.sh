@@ -88,7 +88,7 @@ cp .vimrc ~
 
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install python3-pip libgmp-dev libssl-dev rustc gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace dconf-editor
+apt-get -y -qq install curl python3-pip ruby-dev libgmp-dev libssl-dev rustc gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace dconf-editor
 
 echo "[+] Installing pwntools..."
 pip3 install pwntools
@@ -119,20 +119,18 @@ echo "[+] Installing PEDA..."
 git clone -q https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
-# echo "[+] Cloning some important git repos..."
-# mkdir gitrepos
-# git clone -q https://github.com/BuffaloWill/oxml_xxe
-# git clone -q https://github.com/sensepost/anapickle
+echo "[+] Installing Metasploit..."
+wget -qO "$SCRIPTDLPATH/msfinstall" https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb
+cd "$SCRIPTDLPATH"
+chmod +x msfinstall
+./msfinstall
+cd ..
 
-#cd ../..
+echo "[+] Installing and updating wpscan..."
+gem install wpscan
+wpscan --update
 
-# echo "[+] Updating Metasploit..."
-# apt-get -y -qq install metasploit-framework
-
-# echo "[+] Updating wpscan..."
-# wpscan --update
-
-# echo "[+] Updating mate settings..."
+echo "[+] Updating terminal settings..."
 # # Terminal 
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ help 'disabled' # hate hitting help accidently, noone cares
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ scrollback-unlimited true	# unlimited terminal scrollback

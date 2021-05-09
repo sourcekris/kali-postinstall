@@ -60,10 +60,15 @@ fi
 
 echo "[+] Installing VS Code..."
 wget -qO "$SCRIPTDLPATH/code.deb" https://go.microsoft.com/fwlink/?LinkID=760868
-apt install "$SCRIPTDLPATH/code.deb"
+cd "$SCRIPTDLPATH"
+apt install ./code.deb
+cd ..
 
 echo "[+] Updating repos..."
 apt-get -qq update
+
+echo "[+] Installing more packages..."
+apt-get -y -qq install curl python3-pip ruby-dev libgmp-dev libssl-dev rustc gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace dconf-editor jq
 
 if [ "$VM" == "true" ]
 then
@@ -85,10 +90,6 @@ unzip -qq -d /usr/share/themes theme.zip
 cd ../
 cp themefiles/kalibg.png /usr/share/backgrounds
 cp .vimrc ~
-
-
-echo "[+] Installing more packages..."
-apt-get -y -qq install curl python3-pip ruby-dev libgmp-dev libssl-dev rustc gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace dconf-editor
 
 echo "[+] Installing pwntools..."
 pip3 install pwntools

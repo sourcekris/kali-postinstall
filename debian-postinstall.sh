@@ -68,7 +68,7 @@ echo "[+] Updating repos..."
 apt-get -qq update
 
 echo "[+] Installing more packages..."
-apt-get -y -qq install curl python3-pip ruby-dev libgmp-dev libssl-dev rustc gimp squashfs-tools pngcheck exiftool mongodb-clients sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace dconf-editor jq
+apt-get -y -qq install curl python3-pip ruby-dev libgmp-dev libssl-dev rustc gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace dconf-editor jq
 
 if [ "$VM" == "true" ]
 then

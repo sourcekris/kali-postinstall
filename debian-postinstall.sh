@@ -133,24 +133,24 @@ wpscan --update
 
 echo "[+] Updating terminal settings..."
 # # Terminal 
-gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ help 'disabled' # hate hitting help accidently, noone cares
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ scrollback-unlimited true	# unlimited terminal scrollback
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ background-color $TERMBG
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ foreground-color $TERMFG
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/  palette $TERMPAL
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ help 'disabled' # hate hitting help accidently, noone cares
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ scrollback-unlimited true	# unlimited terminal scrollback
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ background-color $TERMBG
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/ foreground-color $TERMFG
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/  palette $TERMPAL
 
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/  use-theme-colors false
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/  bold-color-same-as-fg false
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/  use-theme-colors false
+dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/default/  bold-color-same-as-fg false
 
 # # Disable screensavers!
-gsettings set org.gnome.desktop.screensaver idle-activation-enabled false	# disable screensave
-gsettings set org.cinnamon.settings-deamon.plugins.power sleep-display-ac 0	# disable screen sleeping when plugged in
+dbus-launch gsettings set org.gnome.desktop.screensaver idle-activation-enabled false	# disable screensave
+dbus-launch gsettings set org.cinnamon.settings-deamon.plugins.power sleep-display-ac 0	# disable screen sleeping when plugged in
 
 # # Wallpaper settings
-gsettings set org.gnome.desktop.background picture-options 'centered'		# set wallpaper options
-gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/kalibg.png'
-gsettings set org.gnome.desktop.background color-shading-type 'solid'
-gsettings set org.gnome.desktop.background primary-color '#23231f1f2020'
+dbus-launch gsettings set org.gnome.desktop.background picture-options 'centered'		# set wallpaper options
+dbus-launch gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/kalibg.png'
+dbus-launch gsettings set org.gnome.desktop.background color-shading-type 'solid'
+dbus-launch gsettings set org.gnome.desktop.background primary-color '#23231f1f2020'
 
 # # Theme and fonts
 # gsettings set org.mate.interface gtk-theme 'Arc-Dark'

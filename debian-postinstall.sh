@@ -144,7 +144,7 @@ dbus-launch gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/
 
 # # Disable screensavers!
 dbus-launch gsettings set org.gnome.desktop.screensaver idle-activation-enabled false	# disable screensave
-dbus-launch gsettings set org.cinnamon.settings-deamon.plugins.power sleep-display-ac 0	# disable screen sleeping when plugged in
+dbus-launch gsettings set org.cinnamon.settings-daemon.plugins.power sleep-display-ac 0	# disable screen sleeping when plugged in
 
 # # Wallpaper settings
 dbus-launch gsettings set org.gnome.desktop.background picture-options 'centered'		# set wallpaper options

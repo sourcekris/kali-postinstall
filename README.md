@@ -1,13 +1,17 @@
 Kali Post-Install
 -----------------
 
-A script to more easily setup a new Kali 2021.1
+A script to more easily setup a new Kali 2022.2
 
 Tweet @CTFKris for ideas.
 
 ### Screenshot
 
 ### Changelog
+
+#### 2022.2
+- Use nala instead of apt so we get package history/undo, etc.
+- Remove the VM check. Kali installs open-vm-tools by default now.
 
 #### 2021.1
 - New for Kali w/XFCE which is now the default.

@@ -42,24 +42,9 @@ then
 fi
 
 echo "[*] Improving Kali $VERSION"
-
-if [[ `dmidecode | grep -ic virtual` -gt 0 ]]
-then
-	echo "[*] Running in a VM"
-	VM=true
-fi
-
 echo "[+] Updating repos and installing nala"
 apt-get -qq update
-apt -y -qq install  nala # Use nala from here on out to gain package history.
-
-if [ "$VM" == "true" ]
-then
-	echo "[+] Installing open-vm-tools..."
-	nala install open-vm-tools-desktop fuse 
-else
-	echo "[*] Virtual machine NOT detected, skipping vmtools installation..."
-fi
+apt -y -qq install nala # Use nala from here on out to gain package history.
 
 echo "[+] Downloading ubuntu font..."
 mkdir -p "$SCRIPTDLPATH"
@@ -80,7 +65,7 @@ apt install ./code.deb
 cd ..
 
 echo "[+] Installing more packages..."
-nala install python3 python3-pip evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
+nala install -y python3 python3-pip evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
 
 echo "[+] Installing pip packages for Python3..."
 pip3 install pwntools xortool gmpy sympy libnum pycryptodome
@@ -94,12 +79,12 @@ git clone -q https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 echo "[+] Updating Metasploit..."
-nala install metasploit-framework
+nala install -y metasploit-framework
 
 echo "[+] Updating wpscan..."
 wpscan --update
 
 echo "[+] Upgrading all packages..."
-nala upgrade
+nala -y upgrade
 
 rm -fr "$SCRIPTDLPATH"

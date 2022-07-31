@@ -85,6 +85,6 @@ echo "[+] Updating wpscan..."
 wpscan --update
 
 echo "[+] Upgrading all packages..."
-nala -y upgrade
+nala upgrade -y
 
 rm -fr "$SCRIPTDLPATH"

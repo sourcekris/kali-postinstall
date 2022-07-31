@@ -33,4 +33,4 @@ Tweet @CTFKris for ideas.
 #### v2016.2
 
 - Updated for Kali 2016.2 including GTK3.20 support.
-- **Note**: GTK3.21 probably breaks the theme but is in the Kali rolling repo already. Be careful if running a apt-get upgrade.
+- **Note**: GTK3.21 probably breaks the theme but is in the Kalxi rolling repo already. Be careful if running a apt-get upgrade.

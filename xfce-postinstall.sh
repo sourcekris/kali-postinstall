@@ -7,7 +7,7 @@ MONITOR=$(xfconf-query -c xfce4-desktop -l | awk -F'/' '{print $3"/"$4}' | grep 
 BG="/backdrop/$MONITOR/workspace0"
 xfconf-query -c xfce4-desktop -p "$BG"/image-style -s 0 # Turn off image
 xfconf-query -c xfce4-desktop -p "$BG"/color-style -s 0 # Solid color
-xfconf-query -c xfce4-desktop -p "$BG"/rgba1 -t double -t double -t double -t double -s 0.1 -s 0 -s 0.1 -s 1 # Dark purple.
+xfconf-query -c xfce4-desktop -pn "$BG"/rgba1 -t double -t double -t double -t double -s 0.1 -s 0 -s 0.1 -s 1 # Dark purple.
 
 # Move panel-1 to bottom.
 xfconf-query -c xfce4-panel -p /panels/panel-1/position -s "p=8;x=0;y=0" # snap to bottom

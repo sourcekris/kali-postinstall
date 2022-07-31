@@ -20,7 +20,7 @@ xfconf-query -c xfce4-panel -pn /panels/panel-2/length -t int -s 100
 xfconf-query -c xfce4-panel -pn /panels/panel-2/size -t int -s 34
 
 # Remove plugins 7,13,15,20,21,22 (cpugraph, sep, sep, actions) from panel-1 and add 21,22 to panel 2
-VALS="$(seq -f "-t int -s %g" -s " " 7) $(seq -f "-t int -s %g" -s " " 10 12) -t int -s 9 -t int -s 14 $(seq -f "-t int -s %g" -s " " 16 19)"
+VALS="$(seq -f "-t int -s %g" -s " " 7) $(seq -f "-t int -s %g" -s " " 23 26) $(seq -f "-t int -s %g" -s " " 10 12) -t int -s 9 -t int -s 14 $(seq -f "-t int -s %g" -s " " 16 19)"
 xfconf-query -c xfce4-panel -p /panels/panel-1/plugin-ids $VALS
 xfconf-query -c xfce4-panel -pn /panels/panel-2/plugin-ids -t int -s 21 -t int -s 22
 xfconf-query -c xfce4-panel -pn /plugins/plugin-21/expand -t bool -s true				# expand
@@ -28,4 +28,18 @@ xfconf-query -c xfce4-panel -pn /plugins/plugin-21/style -t int -s 0					# trans
 xfconf-query -c xfce4-panel -pn /plugins/plugin-9/miniature-view -t bool -s true		# desktop switcher view
 xfconf-query -c xfce4-panel -pn /plugins/plugin-11/grouping -t int -s 0		            # never group
 xfconf-query -c xfce4-panel -pn /plugins/plugin-11/show-labels -t bool -s true		    # window labels
+
+# add burpsuite, metasploit, ghidra and remmina launchers
+xfconf-query -c xfce4-panel -pn /plugins/plugin-23 -t string -s "launcher"		        # burp
+xfconf-query -c xfce4-panel -pn /plugins/plugin-24 -t string -s "launcher"		        # msfconsole
+xfconf-query -c xfce4-panel -pn /plugins/plugin-25 -t string -s "launcher"		        # ghidra
+xfconf-query -c xfce4-panel -pn /plugins/plugin-26 -t string -s "launcher"		        # remmina
+mkdir -p ~/.config/xfce4/panel/launcher-23/ && cp /usr/share/applications/kali-burpsuite.desktop ~/.config/xfce4/panel/launcher-23/
+mkdir -p ~/.config/xfce4/panel/launcher-24/ && cp /usr/share/applications/kali-msfconsole.desktop ~/.config/xfce4/panel/launcher-24/
+mkdir -p ~/.config/xfce4/panel/launcher-25/ && cp /usr/share/applications/kali-ghidra.desktop ~/.config/xfce4/panel/launcher-25/
+mkdir -p ~/.config/xfce4/panel/launcher-26/ && cp /usr/share/applications/org.remmina.Remmina.desktop ~/.config/xfce4/panel/launcher-26/
+xfconf-query -c xfce4-panel -pn /plugins/plugin-23/items -t string -s "kali-burpsuite.desktop" -a
+xfconf-query -c xfce4-panel -pn /plugins/plugin-24/items -t string -s "kali-msfconsole.desktop" -a
+xfconf-query -c xfce4-panel -pn /plugins/plugin-25/items -t string -s "kali-ghidra.desktop" -a
+xfconf-query -c xfce4-panel -pn /plugins/plugin-26/items -t string -s "org.remmina.Remmina.desktop" -a
 xfce4-panel -r # Restart to pickup new panel config.

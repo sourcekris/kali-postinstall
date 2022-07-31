@@ -65,7 +65,7 @@ apt install ./code.deb
 cd ..
 
 echo "[+] Installing more packages..."
-nala install -y python3 python3-pip evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
+nala install -y ghidra remmina python3 python3-pip evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
 
 echo "[+] Installing pip packages for Python3..."
 pip3 install pwntools xortool gmpy sympy libnum pycryptodome
@@ -87,4 +87,7 @@ wpscan --update
 echo "[+] Upgrading all packages..."
 nala upgrade -y
 
+echo "[+] Cleanup after upgrade..."
 rm -fr "$SCRIPTDLPATH"
+nala install -y --fix-broken
+nala autoremove -y

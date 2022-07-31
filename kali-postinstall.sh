@@ -71,6 +71,7 @@ cd ..
 
 cp themefiles/kalibg.png /usr/share/backgrounds
 cp .vimrc ~
+chsh -s /bin/bash root
 
 echo "[+] Installing VS Code..."
 wget -qO "$SCRIPTDLPATH/code.deb" https://go.microsoft.com/fwlink/?LinkID=760868

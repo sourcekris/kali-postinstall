@@ -12,6 +12,12 @@ SCRIPTDLPATH="$BASEPATH/scriptdls/"
 THEMEFILES="$BASEPATH/themefiles/"
 BGPATH="/usr/share/backgrounds"
 
+## Preferred Kali mirror. See: https://http.kali.org/README?mirrorlist
+#KALIMIRROR="http://mirror.aarnet.edu.au/pub/kali/kali"
+KALIMIRROR="https://kali.download/kali/" # Cloudflare
+
+VERBOSE=0
+
 # We do VM detection later, default case it false, set manually to true if the 
 # detection fails for you
 VM=false

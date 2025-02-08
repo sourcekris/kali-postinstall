@@ -63,7 +63,7 @@ echo "[+] Updating wpscan..."
 wpscan --update
 
 echo "[+] Upgrading all packages..."
-nala upgrade -y
+apt_upgrade
 
 log "info" "Cleanup after upgrade..."
 rm -fr "$SCRIPTDLPATH"

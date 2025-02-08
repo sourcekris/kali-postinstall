@@ -8,7 +8,7 @@ source $BASEPATH/modules/common.sh
 
 install_apt_packages() {
     local modname="apt package installer"
-    apt install -y ghidra remmina python3 evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
+    apt install -y kali-root-login ghidra remmina python3 evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
 }
 
 apt_update() {
@@ -86,4 +86,10 @@ EOF
 
     log "info" "$modname succeeded, new mirror: $mirror_url"
     return 0 # Indicate success
+}
+
+apt_package_exists() {
+    local pkg="$1"
+    dpkg -s "$pkg" > /dev/null 2>&1
+    return $?
 }

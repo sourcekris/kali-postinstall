@@ -11,6 +11,7 @@ source $BASEPATH/modules/kalibg.sh
 source $BASEPATH/modules/chsh.sh
 source $BASEPATH/modules/vscode.sh
 source $BASEPATH/modules/apt.sh
+source $BASEPATH/modules/xfce.sh
 
 # log "info" "Starting the process..."
 # log "warning" "Disk space is running low."
@@ -23,3 +24,5 @@ install_bg
 change_shell_to_bash
 install_vscode
 apt_kali_mirror_change "$KALIMIRROR"
+xfce_desktop_bg
+xfce_create_top_panel

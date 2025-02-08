@@ -5,17 +5,13 @@ then
 fi
 
 source $BASEPATH/modules/common.sh
-
-check_vscode_exists() {
-    dpkg -s code > /dev/null 2>&1
-    return $?
-}
+source $BASEPATH/modules/apt.sh
 
 install_vscode() {
     local modname="VSCode installer"
     local fileurl="https://go.microsoft.com/fwlink/?LinkID=760868"
     
-    check_vscode_exists
+    apt_package_exists "code"
     if [ $? -eq 0 ];
     then
         log "warning" "$modname: already installed, skipping"

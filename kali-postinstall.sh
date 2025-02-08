@@ -1,8 +1,8 @@
 #!/bin/bash
 #-Metadata-----------------------------------------------------------------
 # Filename: kali-postinstall.sh
-# Date: 2022-07-28
-# Version: 2022.2
+# Date: 2025-02-02
+# Version: 2024.4
 #-Notes--------------------------------------------------------------------
 # These are the things I do after install Kali on a new VM/System. 
 #
@@ -14,17 +14,10 @@
 #
 # https://github.com/g0tmi1k/os-scripts/blob/master/kali.sh
 #
-# Tweet @CTFKris for ideas to add to this.
-#
 
-VERSION="2022.2"
+export BASEPATH=`pwd`
 
-# Path to download packages, etc to
-SCRIPTDLPATH="scriptdls/"
-
-# We do VM detection later, default case it false, set manually to true if the 
-# detection fails for you
-VM=false
+source $BASEPATH/modules/common.sh
 
 # People were running "sh kali-postinstall.sh" and this broke tests
 if test "$_" = "/bin/sh"
@@ -46,17 +39,10 @@ echo "[+] Updating repos and installing nala"
 apt-get -qq update
 apt -y -qq install nala # Use nala from here on out to gain package history.
 
-echo "[+] Downloading ubuntu font..."
-mkdir -p "$SCRIPTDLPATH"
-wget -qO "$SCRIPTDLPATH/font.zip" https://assets.ubuntu.com/v1/0cef8205-ubuntu-font-family-0.83.zip
-cd "$SCRIPTDLPATH"
-unzip -qq -o -d /usr/share/fonts/truetype/ttf-ubuntu font.zip
-fc-cache -f
-cd ..
-
-cp themefiles/kalibg.png /usr/share/backgrounds
-cp .vimrc ~
-chsh -s /bin/bash root
+# install_font
+# install_bg
+# install_vimrc
+# change_shell_to_bash
 
 echo "[+] Installing VS Code..."
 wget -qO "$SCRIPTDLPATH/code.deb" https://go.microsoft.com/fwlink/?LinkID=760868

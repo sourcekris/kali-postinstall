@@ -1,0 +1,8 @@
+# Ignore scriptdls and everything inside it
+scriptdls/
+scriptdls/**
+
+# Other ignore rules...
+.DS_Store
+*.pyc
+venv/

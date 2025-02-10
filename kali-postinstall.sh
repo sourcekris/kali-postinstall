@@ -18,6 +18,7 @@
 export BASEPATH=`pwd`
 
 source $BASEPATH/modules/common.sh
+source $BASEPATH/modules/versioncheck.sh
 
 # People were running "sh kali-postinstall.sh" and this broke tests
 if test "$_" = "/bin/sh"
@@ -34,7 +35,7 @@ then
 	exit
 fi
 
-log "info" "Improving Kali $VERSION"
+version_check
 
 # install_font
 # install_bg

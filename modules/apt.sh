@@ -8,7 +8,7 @@ source $BASEPATH/modules/common.sh
 
 install_apt_packages() {
     local modname="apt package installer"
-    apt install -y kali-root-login ghidra remmina python3 evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
+    apt install -y kali-root-login pipx ghidra remmina python3 evil-ssdp gimp squashfs-tools pngcheck exiftool sshpass libssl-dev pdfcrack tesseract-ocr zlib1g-dev vagrant strace ltrace
 }
 
 apt_update() {

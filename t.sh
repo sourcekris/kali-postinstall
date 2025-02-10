@@ -11,13 +11,17 @@ source $BASEPATH/modules/kalibg.sh
 source $BASEPATH/modules/chsh.sh
 source $BASEPATH/modules/vscode.sh
 source $BASEPATH/modules/apt.sh
+source $BASEPATH/modules/pip.sh
 source $BASEPATH/modules/xfce.sh
+source $BASEPATH/modules/versioncheck.sh
+source $BASEPATH/modules/addpaths.sh
 
 # log "info" "Starting the process..."
 # log "warning" "Disk space is running low."
 # log "error" "Failed to connect to the server."
 # log "invalid" "This is an invalid type." 
 
+version_check
 install_font
 install_vimrc
 install_bg
@@ -26,3 +30,5 @@ install_vscode
 apt_kali_mirror_change "$KALIMIRROR"
 xfce_desktop_bg
 xfce_create_top_panel
+add_paths
+pip_install_packages
